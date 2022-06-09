@@ -17,6 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/err', function () {
-    return view('error');
+Route::get('/error', function () {
+    return view('main.error');
+});
+Route::get('/signin', function () {
+    return view('autorize.signin');
+});
+Route::get('/forgetpassword', function () {
+    return view('autorize.forgetpassword');
 });
