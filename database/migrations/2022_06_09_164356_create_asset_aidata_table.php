@@ -14,8 +14,11 @@ class CreateAssetAidataTable extends Migration
     public function up()
     {
         Schema::create('asset_aidata', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->primary(['asset_id','aidata_id']);
+            $table->bigInteger('asset_id')->unsigned();
+            $table->bigInteger('aidata_id')->unsigned();
+            $table->foreign('asset_id')->references('id')->on('asset');
+            $table->foreign('aidata_id')->references('id')->on('aidata');
         });
     }
 

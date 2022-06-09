@@ -14,7 +14,13 @@ class CreateAidataTable extends Migration
     public function up()
     {
         Schema::create('aidata', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('scheme');
+            $table->string('a_color')->default(null);
+            $table->string('b_color')->default(null);
+            $table->string('c_color')->default(null);
+            $table->string('d_color')->default(null);
+            $table->string('e_color')->default(null);
             $table->timestamps();
         });
     }
