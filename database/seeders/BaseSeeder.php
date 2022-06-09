@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -15,26 +16,27 @@ class BaseSeeder extends Seeder
      */
     public function run()
     {
+        $faker=Factory::create();
         for($i=0;$i<10;$i++) {
             DB::table('asset')->insert([
                 'id' => $i,
-                'name' => Str::random(10),
-                'author' => Str::random(10).'@gmail.com',
+                'name' => $faker->word(),
+                'author' => $faker->name().'@gmail.com',
             ]);
 
             DB::table('asset')->insert([
                 'id' => $i,
-                'path' => Str::random(36),
+                'path' => $faker->word(),
             ]);
 
             DB::table('aidata')->insert([
                 'id' => $i,
-                'scheme' => Str::random(10),
-                'a_color' => Str::random(3),
-                'b_color' => Str::random(3),
-                'c_color' => Str::random(3),
-                'd_color' => Str::random(3),
-                'e_color' => Str::random(3),
+                'scheme' => $faker->word(),
+                'a_color' => $faker->numberBetween(0,255),
+                'b_color' => $faker->numberBetween(0,255),
+                'c_color' => $faker->numberBetween(0,255),
+                'd_color' => $faker->numberBetween(0,255),
+                'e_color' => $faker->numberBetween(0,255),
             ]);
 
             DB::table('asset_aidata')->insert([
