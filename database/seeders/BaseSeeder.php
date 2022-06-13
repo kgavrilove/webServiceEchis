@@ -2,6 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\AiData;
+use App\Models\Asset;
+use App\Models\Image;
+use App\Models\User;
+use Database\Factories\AssetFactory;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -17,43 +22,19 @@ class BaseSeeder extends Seeder
     public function run()
     {
         $faker=Factory::create();
-        for($i=0;$i<10;$i++) {
-            DB::table('asset')->insert([
-                'id' => $i,
-                'name' => $faker->word(),
-                'author' => $faker->name().'@gmail.com',
-            ]);
 
-            DB::table('asset')->insert([
-                'id' => $i,
-                'path' => $faker->word(),
-            ]);
 
-            DB::table('aidata')->insert([
-                'id' => $i,
-                'scheme' => $faker->word(),
-                'a_color' => $faker->numberBetween(0,255),
-                'b_color' => $faker->numberBetween(0,255),
-                'c_color' => $faker->numberBetween(0,255),
-                'd_color' => $faker->numberBetween(0,255),
-                'e_color' => $faker->numberBetween(0,255),
-            ]);
+        for ($i=1; $i<75; $i++){
 
-            DB::table('asset_aidata')->insert([
 
-                'asset_id' => $i,
-                'aidata_id' => $i,
-            ]);
-
-            DB::table('asset_image')->insert([
-
-                'asset_id' => $i,
-                'image_id' => $i,
-            ]);
+        $user=User::factory()->create();
+        $asset=Asset::factory()->create();
+        $image=Image::factory()->make();
+        $aiData=AiData::factory()->make();
+        $asset->image()->save($image);
+        $asset->aiData()->save($aiData);
+    }
 
         }
 
-
-
-    }
 }

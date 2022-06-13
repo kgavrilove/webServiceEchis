@@ -17,6 +17,7 @@ class CreateAssetTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('author');
+            $table->timestamps();
         });
     }
 

@@ -16,13 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::get('/error', function () {
     return view('main.error');
 });
-Route::get('/signin', function () {
-    return view('autorize.signin');
-});
-Route::get('/forgetpassword', function () {
-    return view('autorize.forgetpassword');
-});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+
+Route::get('/table', [App\Http\Controllers\TableController::class, 'index'])->name('table');
+Route::get('/edit/{assetId}', [App\Http\Controllers\TableController::class, 'edit'])->name('edit');
+Route::get('/add', [App\Http\Controllers\TableController::class, 'add'])->name('add');
+Route::get('/delete/{assetId}', [App\Http\Controllers\TableController::class, 'delete'])->name('delete');
+Route::get('/asset/{assetId}', [App\Http\Controllers\TableController::class, 'asset'])->name('asset');
+Route::get('/update', [App\Http\Controllers\TableController::class, 'update'])->name('update');

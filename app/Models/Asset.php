@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Asset extends Model
 {
+    use HasFactory;
     protected $table = 'asset';
 
     protected $fillable = [
@@ -14,6 +15,7 @@ class Asset extends Model
     ];
 
     public function aiData(){
+
         return $this->belongsToMany(AiData::class,'asset_aidata','asset_id','aidata_id');
     }
 
