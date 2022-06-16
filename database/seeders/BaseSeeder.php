@@ -26,12 +26,11 @@ class BaseSeeder extends Seeder
 
         for ($i=1; $i<75; $i++){
 
-
         $user=User::factory()->create();
         $asset=Asset::factory()->create();
         $image=Image::factory()->make();
         $aiData=AiData::factory()->make();
-        $asset->image()->save($image);
+        $asset->image()->save($image);//
         $asset->aiData()->save($aiData);
     }
 

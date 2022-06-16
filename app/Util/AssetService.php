@@ -15,7 +15,7 @@ class AssetService
 
     public function getAllAssets(): array {
         $data=[];
-        foreach (Asset::all() as $asset) {
+        foreach (Asset::all() as $asset) { //
 
             $id=$asset->getAttribute('id');
             $data[$id]['asset']=$asset->toArray();
@@ -25,12 +25,8 @@ class AssetService
         return $data;
     }
 
-    public function getAssetById(int $id):array {
+    public function getAssetById(Asset $asset):array {
 
-        $asset=Asset::find($id);
-        if(!$asset){
-            return [];
-        }
         try {
             $data['asset']=$asset->toArray();
             $data['image']=$asset->image()->get()->toArray();
@@ -43,11 +39,8 @@ class AssetService
 
     }
 
-    public function deleteAsset(int $id): bool {
-        $asset=Asset::find($id);
-        if (!$asset) {
-            return false;
-        }
+    public function deleteAsset(Asset $asset ): bool {
+
         try {
             $image=$asset->image();
             $aidata=$asset->aidata();
@@ -56,8 +49,6 @@ class AssetService
             $asset->delete();
             $image->delete();
             $aidata->delete();
-
-
         } catch (\Throwable $e) {
             return false;
         }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Asset;
 use App\Util\AssetService;
 use Illuminate\Http\Request;
 
@@ -21,31 +22,40 @@ class TableController extends Controller
         return view('dashboard.table',['data'=>$data]);
     }
 
-    public function edit(Request $request, $assetId)
+    public function edit( $assetId)
     {
-        return view('dashboard.edit');
+        $asset=Asset::findOrFail($assetId);
+        try{
+            $data=$this->assetService->getAssetById($asset);
+            
+        }catch (\Throwable $e) {
+            throw new \RuntimeException('Failed Delete');
+        }
+        return view('dashboard.edit',['data'=>$data]);
     }
     public function add()
     {
         return view('dashboard.upload');
     }
-    public function delete(Request $request, $assetId)
+    public function delete( $assetId)
     {
-        if($assetId){
-            $isDeleted=$this->assetService->deleteAsset($assetId);
-            return redirect()->route('table');
+        $asset=Asset::findOrFail($assetId);
+        try{
+            $this->assetService->deleteAsset($asset);
+        } catch (\Throwable $e) {
+            throw new \RuntimeException('Failed Delete');
         }
-
+        return redirect()->route('table');
     }
-    public function asset(Request $request, $assetId)
+    public function asset( $assetId)
     {
-        if($assetId){
-
-            $data=$this->assetService->getAssetById($assetId);
-
-            return view('dashboard.asset',['data'=>$data]);
+        $asset=Asset::findOrFail($assetId);
+        try{
+            $data=$this->assetService->getAssetById($asset);
+        } catch (\Throwable $e) {
+            throw new \RuntimeException('Failed find by id');
         }
-
+        return view('dashboard.asset',['data'=>$data]);
     }
     public function update()
     {

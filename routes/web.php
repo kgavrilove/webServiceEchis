@@ -23,7 +23,7 @@ Route::get('/error', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
-
+//
 Route::get('/table', [App\Http\Controllers\TableController::class, 'index'])->name('table');
 Route::get('/edit/{assetId}', [App\Http\Controllers\TableController::class, 'edit'])->name('edit');
 Route::get('/add', [App\Http\Controllers\TableController::class, 'add'])->name('add');

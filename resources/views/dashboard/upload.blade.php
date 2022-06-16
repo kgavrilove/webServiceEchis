@@ -1,4 +1,6 @@
 @include('main.header')
+
+
 <script >
     function previewFile(input){
         var file = $("input[type=file]").get(0).files[0];

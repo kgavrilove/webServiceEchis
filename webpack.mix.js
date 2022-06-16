@@ -15,5 +15,6 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/table.js', 'public/js')
     .js('resources/js/upload.js', 'public/js')
     .js('resources/js/asset.js', 'public/js')
+    .js('resources/js/edit.js', 'public/js')
     .vue()
     .sass('resources/sass/app.scss', 'public/css');

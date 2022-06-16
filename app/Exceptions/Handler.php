@@ -39,7 +39,7 @@ class Handler extends ExceptionHandler
         });
     }
 
-   /* public function render($request, Throwable $exception)
+    /*public function render($request, Throwable $exception)
     {
         if ($exception) {
             return response()->view('main.error', ['msg' => $exception->getMessage(), 'code'=>$exception->getCode()], 500);
