@@ -25,7 +25,37 @@ window.addEventListener('load', function () {
     if (!isFieldsCorrect()) {
       alert('Fields is not correct');
     } else {
-      alert('okay');
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+      $.ajax({
+        url: '/editAsset',
+        type: 'POST',
+        data: {
+          id: $("#id").val(),
+          name: $("#name").val(),
+          author: $("#author").val(),
+          scheme: $("#scheme").val(),
+          a_color: $("#a_color").val(),
+          b_color: $("#b_color").val(),
+          c_color: $("#c_color").val(),
+          d_color: $("#d_color").val(),
+          e_color: $("#e_color").val()
+        },
+        success: function success(data) {
+          document.location.reload();
+        },
+        error: function error(xhr, status, errorThrown) {
+          var err = JSON.parse(xhr.responseText);
+          $.each(err.errors, function (key, value) {
+            text = value.toString();
+            alert(JSON.stringify(text));
+            return false;
+          });
+        }
+      });
     }
   });
 });

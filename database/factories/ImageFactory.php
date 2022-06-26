@@ -15,7 +15,7 @@ class ImageFactory extends Factory
     {
         return [
             //
-            'path' => $this->faker->url,
+            'path' => 'uploads/assets/test.jpg',
         ];
     }
 }

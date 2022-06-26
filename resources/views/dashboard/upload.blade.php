@@ -21,7 +21,7 @@
     <h2>Добавление объекта </h2>
     <div class="row">
         <div class="col-6">
-            <form action="" class="row">
+            <form action="" class="row" onsubmit="return false">
                 <div class="accordion" id="accordionPanelsStayOpenExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingOne">
@@ -66,7 +66,7 @@
             </form>
         </div>
         <div class="col-6">
-            <img class=" assetImage img-fluid mt-5" src="https://digest.com.kz/static/images/placeholder.jpg" alt="">
+            <img id="assetImage" class=" assetImage img-fluid mt-5" src="https://digest.com.kz/static/images/placeholder.jpg" alt="">
         </div>
     </div>
 </div>

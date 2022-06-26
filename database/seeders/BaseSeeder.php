@@ -24,7 +24,7 @@ class BaseSeeder extends Seeder
         $faker=Factory::create();
 
 
-        for ($i=1; $i<75; $i++){
+        for ($i=1; $i<2; $i++){
 
         $user=User::factory()->create();
         $asset=Asset::factory()->create();

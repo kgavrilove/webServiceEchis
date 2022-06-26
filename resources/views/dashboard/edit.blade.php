@@ -16,6 +16,12 @@
                         <div id="panelsStayOpen-collapse2" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading1">
                             <div class="accordion-body">
                                 <div class="row mb-1">
+                                    <label for="colFormLabel" class="col-sm-3 col-form-label">Id </label>
+                                    <div class="col-sm-8">
+                                        <input  readonly type="text" class="form-control" id="id" value="{{$data['asset']['id']}}" placeholder="Название объекта">
+                                    </div>
+                                </div>
+                                <div class="row mb-1">
                                     <label for="colFormLabel" class="col-sm-3 col-form-label">Название </label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" id="name" value="{{$data['asset']['name']}}" placeholder="Название объекта">
